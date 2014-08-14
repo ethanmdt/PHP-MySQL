@@ -54,4 +54,53 @@ function change_password($username, $old_passwd, $new_passwd) {
 		return true;
 	}
 }
+
+function reset_password($username) {
+	$new_password = get_random_word(6,13);
+
+	if ($new_password == false) {
+		throw new Exception("Could not generate new password.", 1);
+	}
+
+	$rand_number = rand(0,999);
+	$new_password .= $rand_number;
+
+	$conn = db_connect();
+	$result = $conn ->query("update user
+							 set passwd = sha1('".$new_password."')
+							 where username = '".$username."'");
+	if (!$result) {
+		throw new Exception("Could not change password.", 1);
+	} else {
+		return $new_password;
+	}
+}
+
+
+function get_random_word($min_length, $max_length) {
+	return "abcdef";
+}
+
+function notify_password($username, $password) {
+	$conn = db_connect();
+	$result = $conn -> query("select email from user
+							  where username ='".$username."'");
+	if (!$result) {
+		throw new Exception("Could not find email address", 1);
+	} else if ($result -> num_rows == 0) {
+		throw new Exception("Could not find email address.", 1);
+	} else {
+		$row = $result -> fetch_object();
+		$email = $row -> email;
+		$from = "From: support@phpbookmark \r\n";
+		$mesg = "Your PHPBookmark password has been changed to ".$password."\r\n"."Please change it next time you log in.\r\n";
+
+		if (mail($email, 'PHPBookmark login information', $mesg, $from)) {
+			return true;
+		} else {
+			throw new Exception("Could not send email", 1);
+		}
+	}
+
+}
 ?>

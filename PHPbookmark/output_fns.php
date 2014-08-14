@@ -91,5 +91,15 @@ function display_user_menu() {
 	</ul>
 <?php 
 }
+
+function display_reset_form() {
+?>
+	<form method="POST" action="forgot_passwd.php">
+		<label for="username">Enter your username</label>
+		<input type="text" name="username" id="username">
+		<input type="submit" value="Change password">
+	</form>
+<?php 
+} 
 ?>
 
