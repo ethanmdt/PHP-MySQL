@@ -19,6 +19,26 @@ function register($username, $email, $password) {
 function login($username, $password) {
 	$conn = db_connect();
 	$result = $conn -> query("select * from user 
-							where username='".$username."'and password = sha1('".password."')");
+							where username='".$username."'and passwd = sha1('".$password."')");
+	if (!$result) {
+		throw new Exception("Could not log you in1.", 1);
+	}
+	if ($result -> num_rows > 0) {
+		return true;
+	} else {
+		throw new Exception("Could not log you in2", 1);
+	}
+}
+
+function check_valid_user() {
+	if (isset($_SESSION['valid_user'])) {
+		echo "logged in as ".$_SESSION['valid_user'].".<br />";
+	} else {
+		do_html_heading('Problem:');
+		echo 'You are not logged in.<br />';
+//		do_html_url('login.php', 'Login');
+		do_html_footer();
+		exit;
+	}
 }
 ?>

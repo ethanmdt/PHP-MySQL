@@ -3,7 +3,7 @@
 	session_start();
 
 	$username = $_POST['username'];
-	$passwd = $_POST['passwd'];
+	$passwd = $_POST['password'];
 
 	if ($username && $passwd) {
 		try {
@@ -14,7 +14,8 @@
 			do_html_header('Problem:');
 			echo 'You could not be logged in.
 				  You must be logged in to view this page';
-				  do_html_url('login.php', 'Login');
+//				  do_html_url('login.php', 'Login');
+				  echo $e->getmessage();
 				  do_html_footer();
 				  exit;
 		}
@@ -22,11 +23,11 @@
 
 	do_html_header('Home');
 	check_valid_user();
-	if ($url_array = get_user_urls($_SESSION['valid_user'])) {
+/*	if ($url_array = get_user_urls($_SESSION['valid_user'])) {
 		display_user_urls($url_array);
 	}
 
-	display_user_menu();
-
+	display_user_menu();*/
+	echo 'Successful login!';
 	do_html_footer();
 ?>
