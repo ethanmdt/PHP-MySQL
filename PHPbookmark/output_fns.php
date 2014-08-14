@@ -56,16 +56,39 @@ function display_login_form() {
 function display_registration_form() {	
 ?>
 	<form method= "POST" action="register_new.php">
-	<label for="email">Email address:</label>
-	<input type="email" name="email" id="email">
-	<label for="username">Preferred username(max 16 chars):</label>
-	<input type="text" name="username" id="username">
-	<label for="passwd">Password (between 6 and 16 chars):</label>
-	<input type="password" name="passwd" id="passwd">
-	<label for="passwd2">Confirm password:</label>
-	<input type="password" name="passwd2" id="passwd2">
-	<input type="submit" value="Register">
+		<label for="email">Email address:</label>
+		<input type="email" name="email" id="email">
+		<label for="username">Preferred username(max 16 chars):</label>
+		<input type="text" name="username" id="username">
+		<label for="passwd">Password (between 6 and 16 chars):</label>
+		<input type="password" name="passwd" id="passwd">
+		<label for="passwd2">Confirm password:</label>
+		<input type="password" name="passwd2" id="passwd2">
+		<input type="submit" value="Register">
 	</form>
+<?php 
+}
+
+function display_password_form() {
+?>
+	<form method="POST" action="change_passwd.php">
+		<label for="old_passwd">Old password:</label>
+		<input type="password" name="old_passwd" id="old_passwd">
+		<label for="new_passwd">New password:</label>
+		<input type="password" name="new_passwd" id="new_passwd">
+		<label for="new_passwd2">Repeat new password:</label>
+		<input type="password" name="new_passwd2" id="new_passwd2">
+		<input type="submit" value="Change password">
+	</form>
+<?php 
+}
+
+function display_user_menu() {
+?>
+	<ul>
+		<li><a href="logout.php">Logout</a></li>
+		<li><a href="change_passwd_form.php">Change password</a></li>
+	</ul>
 <?php 
 }
 ?>

@@ -21,12 +21,12 @@ function login($username, $password) {
 	$result = $conn -> query("select * from user 
 							where username='".$username."'and passwd = sha1('".$password."')");
 	if (!$result) {
-		throw new Exception("Could not log you in1.", 1);
+		throw new Exception("Could not connect database.", 1);
 	}
 	if ($result -> num_rows > 0) {
 		return true;
 	} else {
-		throw new Exception("Could not log you in2", 1);
+		throw new Exception("The password is wrong", 1);
 	}
 }
 
@@ -39,6 +39,19 @@ function check_valid_user() {
 //		do_html_url('login.php', 'Login');
 		do_html_footer();
 		exit;
+	}
+}
+
+function change_password($username, $old_passwd, $new_passwd) {
+	login($username, $old_passwd);
+	$conn = db_connect();
+	$result = $conn -> query("update user
+							  set passwd = sha1('".$new_passwd."')
+							  where username = '".$username."'");
+	if (!$result) {
+		throw new Exception("Password could not be changed", 1);
+	} else {
+		return true;
 	}
 }
 ?>
