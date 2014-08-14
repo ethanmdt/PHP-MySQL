@@ -15,7 +15,6 @@
 			echo 'You could not be logged in.
 				  You must be logged in to view this page';
 //				  do_html_url('login.php', 'Login');
-				  echo $e->getmessage();
 				  do_html_footer();
 				  exit;
 		}
