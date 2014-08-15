@@ -88,6 +88,7 @@ function display_user_menu() {
 	<ul>
 		<li><a href="logout.php">Logout</a></li>
 		<li><a href="change_passwd_form.php">Change password</a></li>
+		<li><a href="add_bm_form.php">Add BM</a></li>
 	</ul>
 <?php 
 }
@@ -101,5 +102,14 @@ function display_reset_form() {
 	</form>
 <?php 
 } 
-?>
 
+function display_add_bm_form() {
+?>
+	<form method="POST" action="add_bms.php">
+		<label for="new_bm">New BM:</label>
+		<input type="text" name="new_bm" id="new_bm">
+		<input type="submit" value="Add bookmark">
+	</form>
+<?php 
+} 
+?>
