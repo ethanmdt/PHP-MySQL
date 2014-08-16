@@ -112,4 +112,25 @@ function display_add_bm_form() {
 	</form>
 <?php 
 } 
+
+function display_user_urls($url_array) {
+?>
+	<form method="POST" action="delete_bms.php">
+<?php 
+	if ((is_array($url_array)) && (count($url_array) > 0)) {
+		foreach ($url_array as $url) {
+			echo "<a href=\"$url\">".htmlspecialchars($url)."</a>";
+			//echo "<input type=\"checkbox\" name=\"del_me[]\">";
+			echo "<input type=\"checkbox\" name=\"del_me[]\" value=\"".$url."\"/>";
+		}
+?>
+	<input type="submit" value="Delete BM">
+<?php  
+	} else {
+		echo "<h3>No bookmarks on record<h3>";
+	}	
+ ?>
+	</form>
+<?php 
+}
 ?>

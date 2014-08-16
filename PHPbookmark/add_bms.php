@@ -22,9 +22,9 @@
 		add_bm($new_url);
 		echo 'Bookmark added.';
 
-		/*if ($url_array = get_user_urls($_SESSION['valid_user'])) {
+		if ($url_array = get_user_urls($_SESSION['valid_user'])) {
 			display_user_urls($url_array);
-		}*/
+		}
 	}
 
 	catch (Exception $e) {

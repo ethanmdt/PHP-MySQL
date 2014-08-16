@@ -20,4 +20,32 @@ function add_bm($new_url){
 	}
 	return true;
 }
- ?>
+
+function get_user_urls($username) {
+	$conn = db_connect();
+	$result = $conn ->query("select bm_URL 
+							 from bookmark
+							 where username = '".$username."'");
+
+	if (!$result) {
+		return false;
+	}
+
+	$url_array = array();
+	for ($count = 1; $row = $result -> fetch_row(); ++$count) {
+		$url_array[$count] = $row[0];
+	}
+
+	return $url_array;
+ }
+
+function delete_bm($user, $url) {
+	$conn = db_connect();
+
+	if (!$conn->query("delete from bookmark
+						where username ='".$user."'and bm_url='".$url."'")) {
+		throw new Exception("Bookmark could not be deleted.", 1);
+	}
+
+	return true;
+}
