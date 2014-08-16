@@ -32,7 +32,7 @@ function login($username, $password) {
 
 function check_valid_user() {
 	if (isset($_SESSION['valid_user'])) {
-		echo "logged in as ".$_SESSION['valid_user'].".<br />";
+		echo "<p id=\"logmsg\">logged in as ".$_SESSION['valid_user'].".</p><br />";
 	} else {
 		do_html_heading('Problem:');
 		echo 'You are not logged in.<br />';

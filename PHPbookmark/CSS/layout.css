@@ -4,3 +4,28 @@ label {
 input[type="submit"] {
 	display: block;
 }
+
+#menu {
+	float:left;
+	margin: 0;
+	padding: 0;
+}
+#menu>li {
+	display: inline;
+	padding: 0.5em;
+	background-color: #2ecc71;
+	border-radius: 2px;
+	box-shadow: 1px 1px 1px;
+}
+
+#menu>li>a {
+	color: white;
+}
+
+#menu>li>a:visited {
+	color: white;
+}
+
+a{
+	text-decoration: none;
+}

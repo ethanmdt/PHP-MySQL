@@ -17,7 +17,6 @@ function do_html_header($title) {
 
 function do_html_footer() {
 ?>
-		<a href="login.php" alt="click to back"><p>Login page</p></a>
 		</body>
 	</html>
 <?php 
@@ -85,10 +84,13 @@ function display_password_form() {
 
 function display_user_menu() {
 ?>
-	<ul>
+	<hr>
+	<ul id="menu">
+		<li><a href="home.php">Home</a></li>
 		<li><a href="logout.php">Logout</a></li>
 		<li><a href="change_passwd_form.php">Change password</a></li>
 		<li><a href="add_bm_form.php">Add BM</a></li>
+		<li><a href="recommend.php">Rcommend URLS to me</a></li>
 	</ul>
 <?php 
 }
@@ -120,7 +122,6 @@ function display_user_urls($url_array) {
 	if ((is_array($url_array)) && (count($url_array) > 0)) {
 		foreach ($url_array as $url) {
 			echo "<a href=\"$url\">".htmlspecialchars($url)."</a>";
-			//echo "<input type=\"checkbox\" name=\"del_me[]\">";
 			echo "<input type=\"checkbox\" name=\"del_me[]\" value=\"".$url."\"/>";
 		}
 ?>
@@ -132,5 +133,14 @@ function display_user_urls($url_array) {
  ?>
 	</form>
 <?php 
+}
+
+function display_recommend_urls($url_array) {
+
+	if ((is_array($url_array)) && (count($url_array) > 0)) {
+		foreach ($url_array as $url) {
+			echo "<a href=\"$url\">".htmlspecialchars($url)."</a><br/>";
+		}
+	}
 }
 ?>
