@@ -1,4 +1,5 @@
 <?php
+
 function do_html_header($title) {
 ?>
 	<html>
@@ -21,6 +22,14 @@ function do_html_footer() {
 	</html>
 <?php 
 }
+
+function do_html_URL($url, $name) {
+  // output URL as link and br
+?>
+  <a href="<?php echo $url; ?>"><?php echo $name; ?></a><br />
+<?php
+}
+
 
 function do_html_heading($heading) {
 ?>
@@ -158,6 +167,51 @@ function display_categories($cat_array) {
 		echo "</li>";
 	}
 	echo "</ul>";
+	echo "<hr />";
+}
+
+function display_books($book_array) {
+	if (!is_array($book_array)) {
+		echo "<p>No books currently available in this category</p>";
+	} else {
+		echo "<table>";
+		foreach ($book_array as $row) {
+			$url="show_book.php?isbn=".$row['isbn'];
+			echo "<tr><td>";
+			if (@file_exists("image/".$row['isbn']."jpg")) {
+				$title = "<img src=\"image/".$row['isbn'].".jpg\"/>";
+				do_html_url($url,$title);
+			} else {
+				echo "&nbsp";
+			}
+
+			echo "</td><td>";
+			$title = $row['title']." by ".$row['author'];
+			do_html_url($url,$title);
+			echo "</td></tr>";
+		}
+		echo "</table>";
+	}
+	echo "<hr/>";
+}
+
+function display_book_details($book){
+	if(!is_array($book)) {
+		echo "<p>The details of this book cannot be displayed at this time.</p>";
+	} else {
+		echo "<table><tr>";
+		$img = "image/".$book['isbn'].".jpg";
+		if ($file_exists($img)) {
+			echo "<td><img src=$img></td>";
+		}
+		echo "<td><ul>";
+		echo "<li><strong>Author:</strong>".$book['author']."</li>";
+		echo "<li><strong>ISBN:</strong>".$book['isbn']."</li>";
+		echo "<li><strong>Our Price:</strong>".$book['price']."</li>";
+		echo "<li><strong>Description:</strong>".$book['description']."</li>";
+		}
+		echo "</ul></td></tr></table>";
+	}
 	echo "<hr />";
 }
 ?>

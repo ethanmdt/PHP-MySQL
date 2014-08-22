@@ -44,4 +44,18 @@
 		$result = db_result_to_array($result);
 		return $result;
 	}
+
+	function get_book_details($isbn) {
+		if(!isset($isbn)) {
+			return false;
+		}
+		$conn = db_connect();
+		$query = "select * from books where isbn =".$isbn;
+		$result = @$conn ->query($query);
+		if (!result) {
+			return false;
+		}
+		$result = @$result -> fetch_assoc();
+		return $result;
+	}
  ?>

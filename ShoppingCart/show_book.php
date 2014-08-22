@@ -8,12 +8,13 @@
 	do_html_header($book['title']);
 	display_book_details($book);
 
-	$target = "index.php";
+	/*$target = "index.php";
 	if ($book['catid']) {
 		$target = "show_cat.php?catid=".$book['catid'];
 	}
 
 	if (check_admin_user()) {
 		display_button("edit_book_form.php")
-	}
+	}*/
+	do_html_footer();
  ?>

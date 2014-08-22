@@ -11,13 +11,13 @@
 
 	display_books($book_array);
 
-	if(isset($_SESSION['admin_user'])) {
+	/*if(isset($_SESSION['admin_user'])) {
 		display_button("index.php","continue", "Continue Shopping");
 		display_button("admin.php", "admin-menu", "Admin Menu");
 		display_button("edit_category_form.php?catid=".$catid,"edit_category","Edit Category");
 	}else {
 		display_button("index.php", "continue-shopping", "Continue Shopping");
-	}
+	}*/
 
 	do_html_footer();
  ?>
