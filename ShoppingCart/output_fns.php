@@ -8,8 +8,11 @@ function do_html_header($title) {
 			<link rel="stylesheet" href="CSS/layout.css" type="text/css">
 		</head>
 		<body>
-			<h1>PHPbookmark</h1>
-			<hr/>
+			<header>
+				<img src="images/Book-O-Rama.gif" alt="h1" id="header">
+				<a href="show_cart.php"><img src="images/view-cart.gif" alt="View Cart" id="view_cart"></a>
+			</header>
+		
 <?php
 	if ($title) {
 		do_html_heading($title);
@@ -209,7 +212,6 @@ function display_book_details($book){
 		echo "<li><strong>ISBN:</strong>".$book['isbn']."</li>";
 		echo "<li><strong>Our Price:</strong>".$book['price']."</li>";
 		echo "<li><strong>Description:</strong>".$book['description']."</li>";
-		}
 		echo "</ul></td></tr></table>";
 	}
 	echo "<hr />";

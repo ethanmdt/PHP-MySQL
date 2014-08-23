@@ -8,4 +8,13 @@
 
 		return $res_array;
 	}
+	
+function db_connect() {
+	$result = new mysqli('localhost', 'bm_user', 'password', 'bookmarks');
+	if (!$result) {
+		throw new Exception("Could not connect to database server", 1);
+	} else {
+		return $result;
+	}
+} 
  ?>

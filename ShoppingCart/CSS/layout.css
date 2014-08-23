@@ -1,0 +1,8 @@
+header #view_cart {
+	float: right;
+}
+
+header {
+	background-color: #bdc3c7;
+	height: 55px;
+}

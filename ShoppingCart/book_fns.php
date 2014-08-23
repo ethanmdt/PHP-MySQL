@@ -3,7 +3,7 @@
 		$conn = db_connect();
 		$query = "select catid,catname from categories";
 		$result = @$conn ->query($query);
-		if (!result) {
+		if (!$result) {
 			return false;
 		}
 		$num_cats = @$result->num_rows;
@@ -27,7 +27,7 @@
 			return false;
 		}
 		$row = $result->fetch_object();
-		return row->catname;
+		return $row->catname;
 	}
 
 	function get_books($catid) {
