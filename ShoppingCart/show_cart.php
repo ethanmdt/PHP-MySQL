@@ -49,4 +49,6 @@
 			$target = "show_cat.php?catid=".$details['catid'];
 		}
 	}*/
+
+	do_html_footer();
  ?>

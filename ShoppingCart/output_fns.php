@@ -216,4 +216,37 @@ function display_book_details($book){
 	}
 	echo "<hr />";
 }
+
+function display_cart($cart) {
+
 ?>
+	<table>
+		<tr>
+			<th>Item</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th>Total</th>
+		</tr>
+<?php 
+		$total_price = 0;
+		$total_quantity = 0;
+		foreach ($cart as $isbn => $num) {
+			$row = get_book_details($isbn);
+			$img = "images/".$isbn.".jpg";
+			echo "<tr><td>";
+			if (file_exists($img)) {
+				echo "<img src=\"$img\">";
+			} else {
+				echo "&nbsp";
+			}
+			echo $row['title']." by ".$row['author']."</td>";
+			echo "<td>".$row['price']."</td>";
+			echo "<td>".$num."</td>";
+			echo "<td>".$num*$row['price']."</td></tr>";
+			$total_price+=$num*$row['price'];
+			$total_quantity+=$num;
+		}
+		echo "<tr><td></td><td></td><td>".$total_quantity."</td><td>".$total_price."</td></tr>";
+
+ ?>
+	</table>
