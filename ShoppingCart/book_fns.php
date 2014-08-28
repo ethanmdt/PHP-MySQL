@@ -75,7 +75,7 @@
 		}
 		return $price;
 	}
-
+s
 	function calculate_price($cart) {
 		$items = 0;
 		if (is_array($cart)) {

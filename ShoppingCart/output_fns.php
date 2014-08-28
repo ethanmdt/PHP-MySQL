@@ -235,8 +235,9 @@ function display_cart($cart) {
 			$img = "images/".$isbn.".jpg";
 			echo "<tr><td>";
 			if (file_exists($img)) {
-				echo "<img src=\"$img\">";
+				echo "<img src=\"images/$img.jpg\">";
 			} else {
+
 				echo "&nbsp";
 			}
 			echo $row['title']." by ".$row['author']."</td>";
@@ -250,3 +251,43 @@ function display_cart($cart) {
 
  ?>
 	</table>
+
+<?php 
+function display_button($target, $image, $alt) {
+	echo "<a href=\"$target\"><img src=\"images/$image.jpg\" alt=\"$alt\"></a>";
+}
+
+function display_checkout_form() {
+?>
+	<h1>Your Details</h1>
+	<label for="name">Name</label>
+	<input type="text" name="name" id="name">
+	<label for="address">Address</label>
+	<input type="text" name="address" id="address">
+	<label for="city">City/Suburb</label>
+	<input type="text" name="city" id="city">
+	<label for="state">State/Province</label>
+	<input type="text" name="state" id="state">
+	<label for="postal">Postal Code or Zip Code</label>
+	<input type="text" name="postal" id="postal">
+	<label for="country">Country</label>
+	<input type="text" name="country" id="country">
+	<h1>Shipping Address(leave blank if as above)</h1>
+	<label for="name2">Name</label>
+	<input type="text" name="name2" id="name2">
+	<label for="address2">Address</label>
+	<input type="text" name="address2" id="address2">
+	<label for="city2">City/Suburb</label>
+	<input type="text" name="city2" id="city2">
+	<label for="state2">State/Province</label>
+	<input type="text" name="state2" id="state2">
+	<label for="postal2">Postal Code or Zip Code</label>
+	<input type="text" name="postal2" id="postal2">
+	<label for="country2">Country</label>
+	<input type="text" name="country2" id="country2">
+	<p>Please press Purchase to confirm your purchase,or Continue Shopping to add or remove items</p>
+<?php 
+	display_button("purchase.php", "purchase", "Purchase");
+}
+?>
+

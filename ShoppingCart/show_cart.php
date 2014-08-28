@@ -41,14 +41,14 @@
 		echo "<p> There are no items in your cart </p><hr/>";
 	}
 
-	/*$target = "index.php";
+	$target = "index.php";
 
 	if ($new) {
 		$details = get_book_details($new);
 		if ($details['catid']) {
 			$target = "show_cat.php?catid=".$details['catid'];
 		}
-	}*/
+	}
 
 	do_html_footer();
  ?>
